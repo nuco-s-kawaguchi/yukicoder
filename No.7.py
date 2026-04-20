@@ -1,4 +1,4 @@
-def prime_number(number):
+def is_prime_number(number):
     if number < 2:
         return False
     if number % 2 == 0:
@@ -16,7 +16,7 @@ def prime_number(number):
 def generate_primes(number):
     primes = []
     for i in range(2, number + 1):
-        if prime_number(i):
+        if is_prime_number(i):
             primes.append(i)
     return primes
 
@@ -42,6 +42,7 @@ def main():
                 break
 
     print("Win" if dp[number] else "Lose")
+
 
 if __name__ == "__main__":
     main()
