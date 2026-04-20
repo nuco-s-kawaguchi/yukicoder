@@ -13,8 +13,19 @@ def count_matching_cards(total_mark_types, total_number_types, hand_cards):
     return mark_match + number_match - double_count - len(hand_cards)
 
 
-def read_hand_cards(hand_size):
-    return [tuple(map(int, input().split())) for _ in range(hand_size)]
+def read_card_inputs(hand_size):
+    card_inputs = []
+    for _ in range(hand_size):
+        card_inputs.append(input())
+    return card_inputs
+
+
+def parse_hand_cards(card_inputs):
+    hand_cards = []
+    for card_input in card_inputs:
+        mark_str, number_str = card_input.split()
+        hand_cards.append((int(mark_str), int(number_str)))
+    return hand_cards
 
 
 def main():
@@ -22,7 +33,8 @@ def main():
     total_number_types = int(input())
     hand_size = int(input())
 
-    hand_cards = read_hand_cards(hand_size)
+    card_inputs = read_card_inputs(hand_size)
+    hand_cards = parse_hand_cards(card_inputs)
 
     matching_card_count = count_matching_cards(
         total_mark_types,
